@@ -1,0 +1,15 @@
+.knapp {
+    margin-top: 100px;
+    display: inline-block;
+    background-color: greenyellow;
+    padding: 2.5em 4em;
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
