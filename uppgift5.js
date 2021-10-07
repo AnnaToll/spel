@@ -121,7 +121,7 @@ function spel() {
                     return;
                  }
                  else {
-                     alert(`Du kan inte spela spelet med ${usersChoice} tokboll. Endast sten, sax, eller påse är tillåtet. Försök gärna igen :)`);
+                     alert(`Du kan inte spela spelet med ${usersChoice}. Endast sten, sax, eller påse är tillåtet. Försök igen :)`);
                      
                  }
         
