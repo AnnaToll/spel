@@ -7,91 +7,55 @@ Kom ihåg att bryta ner problemet i flera moduler och få dessa att funka separa
 Parprogrammering uppmuntras. Använd er av tekniker från tidigare uppgifter för att lösa denna uppgift.
 */
 
-/* let gameChoices = ['sten', 'sax', 'påse'];
-
-let randomChoice = gameChoices[2];
-
-console.log(randomChoice);
-console.log(gameChoices.length);
-
-var randomItem = myArray[Math.floor(Math.random()*myArray.length)];*/
 
 function spel() {
-    let counter = 0;
     
     let pointsComputer = 0,
     pointsPlayer = 0;
-    
-    var nummer = Math.random();
-    console.log(nummer);
-    
-    var nummer2 = Math.random();
-    console.log(nummer2);
-    
-    var nummer3 = Math.random();
-    console.log(nummer3);
-    
-    do {
-    
-        counter++;
-    
-        if (counter == 1) {
-            nummer = nummer;
-        } else if (counter == 2) {
-            nummer = nummer2;
-        } else {
-            nummer = nummer3;
-        }
 
-    
-        if (nummer >= 0 && nummer < 0.333) {
-            nummer = 'sten';
-        } else if (nummer >= 0.333 && nummer < 0.666) {
-            nummer = 'sax';
-        } else {
-            nummer = 'påse';
-        }
+    let usersChoice,
+    computerChoice;
 
-        
-        console.log(nummer);
+    let options = ['sten', 'sax', 'påse'];
     
-        let usersChoice;
-        
+    
+    for (let i = 1; i <= 3; i++) {
+
+        computerChoice = options[Math.floor(options.length * Math.random())];
 
         do {
 
-            if (counter == 1) {
+            if (i == 1) {
                 usersChoice = prompt(`Vågar du anta utmaningen? Sten, sax eller påse mot datorn, där bäst av tre vinner :) Välj sten, sax eller påse.`).toLowerCase();    
 
-            } else if (counter == 2) {
+            } else if (i == 2) {
                 usersChoice = prompt(`Omgång 2, Ding ding!! Välj sten, sax eller påse.
                 
             
         Poängställning: ${pointsComputer} (dator) / ${pointsPlayer} (du).`).toLowerCase();
 
-            } else if (counter == 3) {
+            } else if (i == 3) {
                 usersChoice = prompt(`Final Round! Spänningen är olidlig!! Välj sten, sax eller påse.
                 
         Poängställning: ${pointsComputer} (dator) / ${pointsPlayer} (du).`).toLowerCase();
             }
                 
-            if (nummer == usersChoice) {
+            if (computerChoice == usersChoice) {
                     pointsComputer++;
                     pointsPlayer++;
                     alert(`Oavgjort, båda valde ${usersChoice}! Ni får ett poäng var :)`);
-
-            } else if ((nummer == 'sten' && usersChoice == 'sax') 
-            || (nummer == 'sax' && usersChoice == 'påse') 
-            || (nummer == 'påse' && usersChoice == 'sten')) {
+            } else if (
+                (computerChoice == 'sten' && usersChoice == 'sax') 
+            || (computerChoice == 'sax' && usersChoice == 'påse') 
+            || (computerChoice == 'påse' && usersChoice == 'sten')
+            ) {
                 pointsComputer++;
-                alert(`Åh nej!! Datorn valde ${nummer} och du valde ${usersChoice} :(( En poäng till datorn.`);
-
-            } else if ((nummer == 'sten' && usersChoice == 'påse') 
-            || (nummer == 'sax' && usersChoice == 'sten') 
-            || (nummer == 'påse' &&  usersChoice == 'sax')) {
+                alert(`Åh nej!! Datorn valde ${computerChoice} och du valde ${usersChoice} :(( En poäng till datorn.`);
+            } else if ((computerChoice == 'sten' && usersChoice == 'påse') 
+            || (computerChoice == 'sax' && usersChoice == 'sten') 
+            || (computerChoice == 'påse' &&  usersChoice == 'sax')) {
                 pointsPlayer++;
-                alert(`Bra jobbat!! Datorn valde ${nummer} och du valde ${usersChoice} :)`);
-
+                alert(`Bra jobbat!! Datorn valde ${computerChoice} och du valde ${usersChoice} :)`);
             } else {
                 if (usersChoice == null || usersChoice == '') {
                     return;
@@ -99,25 +63,24 @@ function spel() {
                      alert(`Du kan inte spela spelet med ${usersChoice}. Endast sten, sax, eller påse är tillåtet. Försök igen :)`);
                  }  
             }
-        } while (usersChoice != 'sten' && usersChoice != 'sax' && usersChoice != 'påse');
+        } while (
+            usersChoice != 'sten' 
+            && usersChoice != 'sax' 
+            && usersChoice != 'påse');
 
-
-    console.log('Omgång' + counter);
+    console.log('Omgång' + i);
     console.log('your points' + pointsPlayer);
     console.log('computer points' + pointsComputer);
-
         
-    } while (counter < 3);
+    }
 
     
     if (pointsPlayer == pointsComputer) {
         alert(`Matchen slutade oavgjort!! Du fick ${pointsPlayer} poäng och datorn fick ${pointsComputer} poäng :) Spela en gång till vetja :D `)
-
     } else if (pointsPlayer > pointsComputer) {
         alert(`Whooopwhoooop, grattis du vann matchen!! Det blev ${pointsPlayer} / ${pointsComputer} till dig :) Kan du klå datorn igen? Spela en gång till vetja :D`);
-
     } else if (pointsPlayer < pointsComputer) {
-        alert(`Åh nej!! Det blev ${pointsComputer} / ${pointsPlayer} till datorn :( Sugen på revansch? Spela en gång till vetja :D`);
+        alert(`Åh nej, du förlorade matchen!! Det blev ${pointsComputer} / ${pointsPlayer} till datorn :( Sugen på revansch? Spela en gång till vetja :D`);
     }
 }
 
